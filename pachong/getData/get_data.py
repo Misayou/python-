@@ -80,11 +80,21 @@ def DbInsertPosition(json, id):
 def DbSelectAll(name):
     id = selectId(name)
     print(type(positionItemDBcon.select(id)))
+    data = positionItemDBcon.select(id)
+
+    # 使用方法
+    # for one in data:
+    #     print(one.positionName)
     return positionItemDBcon.select(id)
 
-# 获取positionitem表中所有的职位信息
+# 获取positionitem表中所有的职位信息  ,返回数据为对象数组
 def DbSelectAllPosition():
+    data =  positionItemDBcon.selectAllPosition()
     print(type(positionItemDBcon.selectAllPosition()))
+
+    # 使用方法
+    # for one in data:
+    #     print(one.id)
     return positionItemDBcon.selectAllPosition()
 
 def main():
@@ -107,8 +117,8 @@ def main():
         else:
             DbInsertPosition(page, id)
 
-    # data = DbSelectAll(name)
-    # print(data)
+    data = DbSelectAll(name)
+    print(data)
 
     data1 = DbSelectAllPosition()
     print(data1)
