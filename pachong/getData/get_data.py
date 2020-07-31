@@ -3,8 +3,6 @@ import pachong.getData.DBoperation.positionItemDBcon as positionItemDBcon
 import pachong.getData.DBclass.positionitem as positionitem
 import requests
 
-import sys
-sys.path.append('pachong.DB')
 
 # 爬取数据并将数据保存到数据库中
 
