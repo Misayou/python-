@@ -37,7 +37,7 @@ def get_json(url, page):
 
 def getData_n():
     positionResult = []
-    for one in range(15):
+    for one in range(5):
         page_data = get_json(url, one + 1)
         for result in page_data["content"]["positionResult"]["result"]:
             positionResult.append(result)
@@ -58,10 +58,10 @@ def getPositionSalaryDic():
     '''
     工资的分类：
         0～8000
-        8000～9000
-        9000～10000
-        10000～12000
-        >12000
+        8000～10000
+        10000～15000
+        15000～20000
+        >20000
     '''
     # 分类后的工资信息
     num = [0, 0, 0, 0, 0]
@@ -75,37 +75,41 @@ def getPositionSalaryDic():
     }
     for rs in positionResult:
         postion = {}
-        salary_max = 0
         salary_min = 0
+        salary_max = 0
         # 切片获取工资
         salary = rs["salary"]
         if len(salary) >= 7:
-            salary_max = int(salary[0:2]) * 1000
-            salary_min = int(salary[4:6]) * 1000
+            salary_min = int(salary[0:2]) * 1000
+            salary_max = int(salary[4:6]) * 1000
         elif (len(salary) < 7) and (len(salary) >= 6):
-            salary_max = int(salary[0:1]) * 1000
-            salary_min = int(salary[3:5]) * 1000
+            salary_min = int(salary[0:1]) * 1000
+            salary_max = int(salary[3:5]) * 1000
         else:
-            salary_max = int(salary[0:1]) * 1000
-            salary_min = int(salary[3:4]) * 1000
-        # print(salary, salary_max, salary_min, "\n")
-        postion["salary_max"] = salary_max
+            salary_min = int(salary[0:1]) * 1000
+            salary_max = int(salary[3:4]) * 1000
+        # print(salary, salary_min, salary_max, "\n")
         postion["salary_min"] = salary_min
+        postion["salary_max"] = salary_max
         postion["companyFullName"] = rs["companyFullName"]
         postion["city"] = rs["city"]
         postion["district"] = rs["district"]
         postion["businessZones"] = rs["businessZones"]
+        postion["latitude"] = rs["latitude"]
+        postion["longitude"] = rs["longitude"]
         positionSalaryDic.append(postion)
-        if salary_min > 0 and salary_max < 8000:
+        # 平均工资
+        salary_mid = (salary_max + salary_min)/2
+        if salary_mid <= 8000:
             num[0] +=1
             salaryDic["salary1"].append(postion)
-        elif salary_min >= 8000 and salary_max < 9000:
+        elif salary_mid <= 10000:
             num[1] +=1
             salaryDic["salary2"].append(postion)
-        elif salary_min >= 9000 and salary_max < 10000:
+        elif salary_mid <= 15000:
             num[2] +=1
             salaryDic["salary3"].append(postion)
-        elif salary_min >= 10000 and salary_max < 12000:
+        elif salary_mid <= 20000:
             num[3] +=1
             salaryDic["salary4"].append(postion)
         else:
@@ -113,21 +117,43 @@ def getPositionSalaryDic():
             salaryDic["salary5"].append(postion)
     # print(salaryDic)
     # print(positionSalaryDic)
-    return salaryDic
+    return [salaryDic, positionSalaryDic]
 
 '''
-根据最低工资进行排序
+根据最低工资进行排序： 从小到大
 '''
 def sortSalary(salaryDic):
     salaryDic.pop("num")
-    dt = np.dtype([
+    for salary_i in salaryDic.values():
+        # print("salary: ")
+        # 从小到大的排序
+        for i in range(len(salary_i)):
+            for j in range(len(salary_i)):
+                if salary_i[i]["salary_min"] < salary_i[j]["salary_min"]:
+                    temp = salary_i[i]
+                    salary_i[i] = salary_i[j]
+                    salary_i[j] = temp
+        # print(salary_i)
+    # print(salaryDic)
+    return salaryDic
 
-    ])
-    for salary in salaryDic.values():
-        salary_tmp = np.array(salary)
-        # np.sort(salary_tmp, kind="mergesort", order="salary_min")
-        print(salary_tmp)
-    # 通过np.sort排序
+'''
+岗位数量地区分配
+'''
+def areaPosition(positionSalaryDic):
+    cityList = []
+    for position in positionSalaryDic:
+        if position["city"] not in cityList:
+            cityList.append(position["city"])
+    # print(cityList)
+    cityNum = []
+    for i in range(len(cityList)):
+        cityNum.append(0)
+    for position in positionSalaryDic:
+        for j in range(len(cityList)):
+            if position["city"] == cityList[j]:
+                cityNum[j] += 1
+    # print(cityNum)
+    return [cityList, cityNum]
 
-salaryDic = getPositionSalaryDic()
-sortSalary(salaryDic)
+
