@@ -1,6 +1,6 @@
-import pachong.getData.DBoperation.positionDBcon as positionDBcon
-import pachong.getData.DBoperation.positionItemDBcon as positionItemDBcon
-import pachong.getData.DBclass.positionitem as positionitem
+import pachong.getData.DB.DBoperation.positionDBcon as positionDBcon
+import pachong.getData.DB.DBoperation.positionItemDBcon as positionItemDBcon
+import pachong.getData.DB.DBclass.positionitem as positionitem
 import requests
 
 
