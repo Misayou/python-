@@ -12,15 +12,23 @@ except Exception as e:
     db.rollback()  # 实现事物的回滚
     print(e)
 
+
+def insert(positionName):
+    sql = 'INSERT INTO `position`(positionName) VALUES (%s)'
+    cursor.execute(sql, positionName)
+    db.commit()
+
 def select(positionName):
     sql = 'select * from position where positionName = %s'
     cursor.execute(sql, positionName)
     data = cursor.fetchone()
-    position = Position(data[0], data[1])
-
-    # 测试查询结果
-    # print(type(position))
-    # print(position)
-    # print(position.positionName)
-    return position
+    if data != None:
+        position = Position(data[0], data[1])
+        # 测试查询结果
+        # print(type(position))
+        # print(position)
+        # print(position.positionName)
+        return position
+    else:
+        return None
 

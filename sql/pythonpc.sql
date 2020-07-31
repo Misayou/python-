@@ -10,10 +10,9 @@ Target Server Type    : MYSQL
 Target Server Version : 50718
 File Encoding         : 65001
 
-Date: 2020-07-31 08:36:40
+Date: 2020-07-31 15:39:48
 */
 
--- 数据库名为pythonpc
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
@@ -30,7 +29,6 @@ CREATE TABLE `position` (
 -- ----------------------------
 -- Records of position
 -- ----------------------------
--- INSERT INTO `position` VALUES ('1', 'test');
 
 -- ----------------------------
 -- Table structure for `positionitem`
@@ -42,7 +40,7 @@ CREATE TABLE `positionitem` (
   `positionItemName` varchar(255) DEFAULT NULL,
   `companySize` varchar(255) DEFAULT NULL,
   `financeStage` varchar(255) DEFAULT NULL,
-  `companyLabeList` varchar(255) DEFAULT NULL,
+  `companyLabelList` varchar(255) DEFAULT NULL,
   `firstType` varchar(255) DEFAULT NULL,
   `companyPosition` varchar(255) DEFAULT NULL,
   `salary` varchar(255) DEFAULT NULL,
@@ -55,6 +53,3 @@ CREATE TABLE `positionitem` (
 -- ----------------------------
 -- Records of positionitem
 -- ----------------------------
--- INSERT INTO `positionitem` VALUES ('1', '1', '技师', null, null, null, null, null, null, null);
--- INSERT INTO `positionitem` VALUES ('2', '1', '学徒', null, null, null, null, null, null, null);
--- INSERT INTO `positionitem` VALUES ('3', '1', '教授', null, null, null, null, null, null, null);

@@ -14,8 +14,8 @@ except Exception as e:
 
 # 再表positionItem中插入数据
 def insert(positionItem):
-    sql = 'insert into positionitem(positionid, positionItemName, companySize, financeStage, companyLabeList, firstType, companyPosition, salary, workYear) VALUES(%s,%s, %s, %s, %s, %s, %s, %s, %s)'
-    cursor.execute(sql,(positionItem[0],positionItem[1],positionItem[2],positionItem[3],positionItem[4],positionItem[5],positionItem[6],positionItem[7],positionItem[8]))
+    sql = 'insert into positionitem(positionid, positionItemName, companySize, financeStage, companyLabelList, firstType, companyPosition, salary, workYear) VALUES(%s,%s, %s, %s, %s, %s, %s, %s, %s)'
+    cursor.execute(sql,(positionItem.positionid,positionItem.positionItemName,positionItem.companySize,positionItem.financeStage,positionItem.companyLabelList,positionItem.firstType,positionItem.companyPosition,positionItem.salary,positionItem.workYear))
     db.commit()
 # 测试插入数据
 # position = [1, '老总', '', '','', '', '', '', '']
@@ -40,8 +40,8 @@ def select(positionId):
         # positionitem['workYear'] = one[8]
         positionitems.append(positionitem)
     return positionitems
-# 测试查找,，返回结果类似于这样[<DBclass.positionitem.Positionitem object at 0x000001CA5E608C08>, <DBclass.positionitem.Positionitem object at 0x000001CA5E6178C8>
-i = select(1)
-# for one in i:
-#     print(one.positionid)
-print(i)
+# # 测试查找,，返回结果类似于这样[<DBclass.positionitem.Positionitem object at 0x000001CA5E608C08>, <DBclass.positionitem.Positionitem object at 0x000001CA5E6178C8>
+# i = select(1)
+# # for one in i:
+# #     print(one.positionid)
+# print(i)

@@ -4,7 +4,7 @@ class Positionitem:
     positionItemName = ''       # 工作名称
     companySize = ''            # 公司规模
     financeStage = ''           # 公司经济状况
-    companyLabeList = ''        # 公司福利
+    companyLabelList = ''        # 公司福利
     firstType = ''              # 需要什么类型的员工
     companyPosition = ''        # 公司地点  ，由json中的city和district拼接而成
     salary = ''                 # 薪水
@@ -15,7 +15,7 @@ class Positionitem:
         self.positionItemName = positionItemName
         self.companySize = companySize
         self.financeStage = financeStage
-        self.companyLabeList = companyLabeList
+        self.companyLabelList = companyLabeList
         self.firstType = firstType
         self.companyPosition = companyPosition
         self.salary = salary
@@ -23,4 +23,4 @@ class Positionitem:
 
 
     def __str__(self):
-        return self.positionid + self.positionItemName + self.companySize + self.financeStage + self.companyLabeList + self.firstType + self.companyPosition + self.salary + self.workYear
+        return str(self.positionid) + "," + self.positionItemName + "," + self.companySize + "," + self.financeStage + "," + self.companyLabelList + "," + self.firstType + "," + self.companyPosition + "," + self.salary + "," + self.workYear
