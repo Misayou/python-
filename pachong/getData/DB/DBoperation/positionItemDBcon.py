@@ -1,5 +1,5 @@
 import pymysql
-from pachong.DB.DBclass.positionitem import Positionitem
+from pachong.getData.DB.DBclass.positionitem import Positionitem
 
 try:
     # 获得连接connect(链接主机，用户名，密码，数据库名)
@@ -28,7 +28,7 @@ def select(positionId):
     positionitems = []
     data = cursor.fetchall()
     for one in data:
-        positionitem = Positionitem(one[0], one[1], one[2],one[3], one[4], one[5], one[6], one[7], one[8])
+        positionitem = Positionitem(one[0], one[1], one[2],one[3], one[4], one[5], one[6], one[7], one[8], one[9])
         # positionitem['positionid'] = one[0]
         # positionitem['positionItemName'] = one[1]
         # positionitem['companySize'] = one[2]

@@ -10,7 +10,8 @@ class Positionitem:
     salary = ''                 # 薪水
     workYear = ''               # 需要工作经验
 
-    def __init__(self, positionid, positionItemName, companySize, financeStage, companyLabeList, firstType, companyPosition, salary, workYear):
+    def __init__(self, id, positionid, positionItemName, companySize, financeStage, companyLabeList, firstType, companyPosition, salary, workYear):
+        self.id = id
         self.positionid = positionid
         self.positionItemName = positionItemName
         self.companySize = companySize
@@ -20,6 +21,7 @@ class Positionitem:
         self.companyPosition = companyPosition
         self.salary = salary
         self.workYear = workYear
+
 
 
     def __str__(self):
