@@ -77,12 +77,19 @@ def DbInsertPosition(json, id):
 
 # 通过positionitem表中的positionid获取到该职业的所有相关职位
 # 返回结果类似于这样[<DBclass.positionitem.Positionitem object at 0x000001CA5E608C08>, <DBclass.positionitem.Positionitem object at 0x000001CA5E6178C8>,里面全是对象
-def DbSelectAll(id):
+def DbSelectAll(name):
+    id = selectId(name)
+    print(type(positionItemDBcon.select(id)))
     return positionItemDBcon.select(id)
+
+# 获取positionitem表中所有的职位信息
+def DbSelectAllPosition():
+    print(type(positionItemDBcon.selectAllPosition()))
+    return positionItemDBcon.selectAllPosition()
 
 def main():
     url = 'https://www.lagou.com/jobs/positionAjax.json?needAddtionalResult=false'
-    name = '软件工程师'
+    name = 'c工程师'
     # 第一次爬取，获取到第一页
     firstpage = get_json(url, 1, name)
 
@@ -98,12 +105,16 @@ def main():
             break
         else:
             DbInsertPosition(page, id)
-    id1 = selectId(name)
 
-    data = DbSelectAll(id1)
-    for one in data:
-        print(one)
+    data = DbSelectAll(name)
 
+    print(data)
+
+
+    # data1 = DbSelectAllPosition()
+    # print(data1)
+    # for one in data1:
+    #     print(one)
 
 if __name__ == '__main__':
     main()

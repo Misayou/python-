@@ -25,4 +25,4 @@ class Positionitem:
 
 
     def __str__(self):
-        return str(self.positionid) + "," + self.positionItemName + "," + self.companySize + "," + self.financeStage + "," + self.companyLabelList + "," + self.firstType + "," + self.companyPosition + "," + self.salary + "," + self.workYear
+        return str(self.id) + "," + str(self.positionid) + "," + self.positionItemName + "," + self.companySize + "," + self.financeStage + "," + self.companyLabelList + "," + self.firstType + "," + self.companyPosition + "," + self.salary + "," + self.workYear
