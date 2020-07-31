@@ -1,10 +1,164 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Info</title>
+<!--    <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">-->
+<!--    <script src="/static/bootstrap/js/bootstrap.js" ></script>-->
+<!--    <script src="/static/bootstrap/js/npm.js" ></script>-->
+
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("table_page").bootstrapTable({
+                columns:[{
+                    field:'company_name',
+                    title:'公司名称'
+                },{
+                    field:'company_size',
+                    title:'公司规模'
+                },{
+                    field:'company_area',
+                    title:'公司地区'
+                },{
+                    field:'position_name',
+                    title:'职位名称'
+                },{
+                    field:'position_first',
+                    title:'职位方向'
+                },{
+                    field:'position_second',
+                    title:'具体定位'
+                },{
+                    field:'work_name',
+                    title:'工作类别'
+                },{
+                    field:'education',
+                    title:'学历要求'
+                },{
+                    field:'workYear',
+                    title:'工作经验'
+                },{
+                    field:'salary',
+                    title:'薪酬范围'
+                },{
+                    field:'time',
+                    title:'发布时间'
+                }
+                ]
+            });
+        });
+
+    </script>
+    <style>
+        .top_button{
+            margin-left: 10%;
+        }
+
+    </style>
 </head>
 <body>
-    这是一个info
+    <div class="top_button">
+        <!-- 按钮触发模态框 -->
+        <button class="btn btn-primary btn-sm"   data-toggle="modal" data-target="#myModal">
+            添加
+        </button>
+        <button class="btn btn-primary btn-sm"   data-toggle="modal" data-target="#myModal">
+            删除
+        </button>
+        <button class="btn btn-primary btn-sm"   data-toggle="modal" data-target="#myModal">
+            查找
+        </button>
+        <button class="btn btn-primary btn-sm"   data-toggle="modal" data-target="#myModal">
+            修改
+        </button>
+    </div>
+    <table class="table" style="width: 80%;margin-left: 10%"
+           id="table_page"
+            data-pagination="true"
+           data-side-pagination="client"
+            data-page-size="5">
+        <caption style="text-align: center">岗位信息一览表</caption>
+        <thread>
+            <tr>
+
+                <th>公司名称</th>
+                <th>公司规模</th>
+                <th>公司地区</th>
+
+                <th>职位名称</th>
+                <th>职位方向</th>
+                <th>具体定位</th>
+
+                <th>工作类别</th>
+                <th>学历要求</th>
+                <th>工作经验</th>
+                <th>薪酬范围</th>
+                <th>发布时间</th>
+                <th>操作</th>
+            </tr>
+        </thread>
+        <tbody>
+        {% for one in all_position %}
+        <tr>
+            <td>{{one.companyShortName}}</td>
+            <td>{{one.companySize}}</td>
+            <td>{{one.city}}:{{one.district}}</td>
+
+            <td>{{one.positionName}}</td>
+            <td>{{one.firstType}}</td>
+            <td>{{one.secondType}}</td>
+
+            <td>{{one.jobNature}}</td>
+            <td>{{one.education}}</td>
+            <td>{{one.workYear}}</td>
+            <td>{{one.salary}}</td>
+            <td>{{one.lastLogin}}</td>
+            <td><a href="delete">删除|</a><a href="update">修改</a></td>
+        </tr>
+        {% endfor%}
+        </tbody>
+    </table>
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">×
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					添加职位信息
+				</h4>
+			</div>
+			<div class="modal-body">
+            <form class="form-horizontal" role="form" action="add">
+                <div class="form-group">
+                    <label for="firstname" class="col-sm-2 control-label">公司名称</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="firstname"
+                               placeholder="公司名称">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lastname" class="col-sm-2 control-label">职位名称</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="lastname"
+                               placeholder="职位名称">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">提交</button>
+                    </div>
+                </div>
+            </form>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 </body>
 </html>
