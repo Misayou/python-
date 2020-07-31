@@ -93,6 +93,7 @@ def main():
     # 第一次爬取，获取到第一页
     firstpage = get_json(url, 1, name)
 
+
     # 读取第一页中的信息，读出总共有多少个职位，并返回页数
     totalcount = firstpage['content']['positionResult']['totalCount']
     pagecount = get_page_num(totalcount)
