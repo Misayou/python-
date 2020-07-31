@@ -1,10 +1,10 @@
-import pachong.DB.DBoperation.positionDBcon as positionDBcon
-import pachong.DB.DBoperation.positionItemDBcon as positionItemDBcon
-import pachong.DB.DBclass.position as position
-import pachong.DB.DBclass.positionitem as positionitem
+import pachong.getData.DBoperation.positionDBcon as positionDBcon
+import pachong.getData.DBoperation.positionItemDBcon as positionItemDBcon
+import pachong.getData.DBclass.positionitem as positionitem
 import requests
 
-
+import sys
+sys.path.append('pachong.DB')
 
 # 爬取数据并将数据保存到数据库中
 
@@ -104,7 +104,7 @@ def main():
 
     data = DbSelectAll(id1)
     for one in data:
-        print(one.positionItemName)
+        print(one)
 
 
 if __name__ == '__main__':
