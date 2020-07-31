@@ -1,5 +1,5 @@
 import pymysql
-from 学习类class.position import Position
+from DBclass.position import Position
 
 try:
     # 获得连接connect(链接主机，用户名，密码，数据库名)
