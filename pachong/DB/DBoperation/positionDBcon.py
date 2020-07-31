@@ -1,5 +1,5 @@
 import pymysql
-from DBclass.position import Position
+from pachong.DB.DBclass.position import Position
 
 try:
     # 获得连接connect(链接主机，用户名，密码，数据库名)
@@ -19,9 +19,8 @@ def select(positionName):
     position = Position(data[0], data[1])
 
     # 测试查询结果
-    print(type(position))
-    print(position)
-    print(position.positionName)
+    # print(type(position))
+    # print(position)
+    # print(position.positionName)
     return position
 
-select('test')
