@@ -27,3 +27,8 @@ def delete(request):
 def update(request):
     return render(request, "info_show.html", {"all_position": json_obj})
 
+def salaryPic(request):
+    from .xp_modules import getPositionSalaryDic
+    salaryDic = getPositionSalaryDic()
+    return render(request, "salaryPic.html", {'num': salaryDic["num"]})
+
