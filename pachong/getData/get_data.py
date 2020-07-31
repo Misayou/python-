@@ -107,9 +107,7 @@ def main():
             DbInsertPosition(page, id)
 
     data = DbSelectAll(name)
-
     print(data)
-
 
     # data1 = DbSelectAllPosition()
     # print(data1)
@@ -118,4 +116,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-

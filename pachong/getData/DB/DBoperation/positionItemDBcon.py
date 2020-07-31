@@ -69,7 +69,6 @@ def selectAllPosition():
         positionitem['companyPosition'] = one[7]
         positionitem['salary'] = one[8]
         positionitem['workYear'] = one[9]
-
         positionitems.append(positionitem)
     resultdata = json.dumps(positionitems, ensure_ascii=False)
     return resultdata[1:len(resultdata) - 1]
