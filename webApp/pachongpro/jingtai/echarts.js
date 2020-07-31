@@ -74336,7 +74336,7 @@ SeriesModel.extend({
      */
     getDataParams: function (dataIndex, dataType, el) {
         var params = SeriesModel.prototype.getDataParams.apply(this, arguments);
-        el && (params.info = el.info);
+        el && (params.info = el.info_show);
         return params;
     }
 });
@@ -74560,7 +74560,7 @@ function updateEl(el, dataIndex, elOption, animatableModel, data, isInit, isRoot
     // `elOption.info` enables user to mount some info on
     // elements and use them in event handlers.
     // Update them only when user specified, otherwise, remain.
-    elOption.hasOwnProperty('info') && el.attr('info', elOption.info);
+    elOption.hasOwnProperty('info_show.html') && el.attr('info_show.html', elOption.info_show);
 
     // If `elOption.styleEmphasis` is `false`, remove hover style. The
     // logic is ensured by `graphicUtil.setElementHoverStyle`.

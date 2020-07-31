@@ -1,5 +1,5 @@
 import pymysql
-from pachong.DB.DBclass.positionitem import Positionitem
+from DB.DBclass.positionitem import Positionitem
 
 try:
     # 获得连接connect(链接主机，用户名，密码，数据库名)

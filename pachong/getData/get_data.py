@@ -1,9 +1,8 @@
-import pachong.DB.DBoperation.positionDBcon as positionDBcon
-import pachong.DB.DBoperation.positionItemDBcon as positionItemDBcon
-import pachong.DB.DBclass.position as position
-import pachong.DB.DBclass.positionitem as positionitem
+import DB.DBoperation.positionDBcon as positionDBcon
+import DB.DBoperation.positionItemDBcon as positionItemDBcon
+import DB.DBclass.position as position
+import DB.DBclass.positionitem as positionitem
 import requests
-
 
 
 # 爬取数据并将数据保存到数据库中
@@ -77,14 +76,18 @@ def DbInsertPosition(json, id):
         positionitem1 = positionitem.Positionitem(psid, id, one['positionName'], one['companySize'], one['financeStage'], fuli, one['firstType'], companyPosition, one['salary'], one['workYear'])
         positionItemDBcon.insert(positionitem1)
 
+
 # 通过positionitem表中的positionid获取到该职业的所有相关职位
-# 返回结果类似于这样[<DBclass.positionitem.Positionitem object at 0x000001CA5E608C08>, <DBclass.positionitem.Positionitem object at 0x000001CA5E6178C8>,里面全是对象
+# 返回结果类似于这样[<DBclass.positionitem.Positionitem object at 0x000001CA5E608C08>,
+# <DBclass.positionitem.Positionitem object at 0x000001CA5E6178C8>,里面全是对象
+
+
 def DbSelectAll(id):
     return positionItemDBcon.select(id)
 
 def main():
     url = 'https://www.lagou.com/jobs/positionAjax.json?needAddtionalResult=false'
-    name = '软件工程师'
+    name = 'python工程师'
     # 第一次爬取，获取到第一页
     firstpage = get_json(url, 1, name)
 
