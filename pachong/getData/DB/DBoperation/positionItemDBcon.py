@@ -15,8 +15,8 @@ except Exception as e:
 
 # 再表positionItem中插入数据
 def insert(positionItem):
-    sql = 'insert into positionitem(positionid, positionItemName, companySize, financeStage, companyLabelList, firstType, companyPosition, salary, workYear) VALUES(%s,%s, %s, %s, %s, %s, %s, %s, %s)'
-    cursor.execute(sql,(positionItem.positionid,positionItem.positionItemName,positionItem.companySize,positionItem.financeStage,positionItem.companyLabelList,positionItem.firstType,positionItem.companyPosition,positionItem.salary,positionItem.workYear))
+    sql = 'insert into positionitem(positionid, positionName, companySize, financeStage, companyLabelList, firstType, companyPosition, salary, workYear, city, district, education, companyFullName, jobNature, createTime, secondType) VALUES(%s,%s, %s, %s, %s, %s, %s, %s, %s, %s,%s,%s,%s,%s,%s,%s)'
+    cursor.execute(sql,(positionItem.positionid,positionItem.positionName,positionItem.companySize,positionItem.financeStage,positionItem.companyLabelList,positionItem.firstType,positionItem.companyPosition,positionItem.salary,positionItem.workYear,positionItem.city,positionItem.district,positionItem.education,positionItem.companyFullName,positionItem.jobNature,positionItem.createTime,positionItem.secondType))
     db.commit()
 # 测试插入数据
 # position = [1, '老总', '', '','', '', '', '', '']
@@ -41,7 +41,13 @@ def select(positionId):
         positionitem['companyPosition'] = one[7]
         positionitem['salary'] = one[8]
         positionitem['workYear'] = one[9]
-
+        positionitem['city'] = one[10]
+        positionitem['district'] = one[11]
+        positionitem['education'] = one[12]
+        positionitem['companyFullName'] = one[13]
+        positionitem['jobNature'] = one[14]
+        positionitem['createTime'] = one[15]
+        positionitem['secondType'] = one[16]
         positionitems.append(positionitem)
     resultdata = json.dumps(positionitems, ensure_ascii=False)
     return resultdata[1:len(resultdata)-1]
@@ -69,6 +75,13 @@ def selectAllPosition():
         positionitem['companyPosition'] = one[7]
         positionitem['salary'] = one[8]
         positionitem['workYear'] = one[9]
+        positionitem['city'] = one[10]
+        positionitem['district'] = one[11]
+        positionitem['education'] = one[12]
+        positionitem['companyFullName'] = one[13]
+        positionitem['jobNature'] = one[14]
+        positionitem['createTime'] = one[15]
+        positionitem['secondType'] = one[16]
         positionitems.append(positionitem)
     resultdata = json.dumps(positionitems, ensure_ascii=False)
     return resultdata[1:len(resultdata) - 1]

@@ -72,7 +72,7 @@ def DbInsertPosition(json, id):
             fuli += i + " "
         companyPosition = str(one['city']+one['district'])
         psid = None
-        positionitem1 = positionitem.Positionitem(psid, id, one['positionName'], one['companySize'], one['financeStage'], fuli, one['firstType'], companyPosition, one['salary'], one['workYear'])
+        positionitem1 = positionitem.Positionitem(psid, id, one['positionName'], one['companySize'], one['financeStage'], fuli, one['firstType'], companyPosition, one['salary'], one['workYear'], one['city'], one['district'], one['education'], one['companyFullName'], one['jobNature'], one['createTime'], one['secondType'])
         positionItemDBcon.insert(positionitem1)
 
 # 通过positionitem表中的positionid获取到该职业的所有相关职位
@@ -106,13 +106,12 @@ def main():
         else:
             DbInsertPosition(page, id)
 
-    data = DbSelectAll(name)
-    print(data)
+    # data = DbSelectAll(name)
+    # print(data)
 
-    # data1 = DbSelectAllPosition()
-    # print(data1)
-    # for one in data1:
-    #     print(one)
+    data1 = DbSelectAllPosition()
+    print(data1)
+
 
 if __name__ == '__main__':
     main()
