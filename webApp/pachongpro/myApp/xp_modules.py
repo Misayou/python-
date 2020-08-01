@@ -5,6 +5,7 @@ import json
 # json数据url
 url = "https://www.lagou.com/jobs/positionAjax.json?needAddtionalResult=false"
 
+# 抓取信息
 def get_json(url, page):
     # 网页的url
     url1 = "https://www.lagou.com/jobs/list_python%E5%B7%A5%E7%A8%8B%E5%B8%88?labelWords=&fromSearch=true&suginput="
@@ -37,7 +38,8 @@ def get_json(url, page):
 
 def getData_n():
     positionResult = []
-    for one in range(5):
+    for one in range(15):
+        # one+1 表示的是抓取页面的页数
         page_data = get_json(url, one + 1)
         for result in page_data["content"]["positionResult"]["result"]:
             positionResult.append(result)
@@ -89,6 +91,7 @@ def getPositionSalaryDic():
             salary_min = int(salary[0:1]) * 1000
             salary_max = int(salary[3:4]) * 1000
         # print(salary, salary_min, salary_max, "\n")
+        # 每一个招聘的数据
         postion["salary_min"] = salary_min
         postion["salary_max"] = salary_max
         postion["companyFullName"] = rs["companyFullName"]

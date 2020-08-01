@@ -118,9 +118,13 @@ def main():
             DbInsertPosition(page, id)
 
     data = DbSelectAll(name)
+    for one in data:
+        print(one['positionName'])
     print(data)
 
     data1 = DbSelectAllPosition()
+    for one in data1:
+        print(one['id'])
     print(data1)
 
 
