@@ -89,13 +89,13 @@ def DbSelectAll(name):
 
 # 获取positionitem表中所有的职位信息  ,返回数据为对象数组
 def DbSelectAllPosition():
-    data =  positionItemDBcon.selectAllPosition()
+    data = positionItemDBcon.selectAllPosition()
     print(type(positionItemDBcon.selectAllPosition()))
 
     # 使用方法
     # for one in data:
     #     print(one.id)
-    return positionItemDBcon.selectAllPosition()
+    return data
 
 def main():
     url = 'https://www.lagou.com/jobs/positionAjax.json?needAddtionalResult=false'

@@ -4,12 +4,16 @@ import json
 # Create your views here.
 from pachong.getDataInfo import get_json_data
 import os
-os.chdir("jingtai/json")
-json_obj = get_json_data()
+# os.chdir("jingtai/json")
+# json_obj = get_json_data()
+import pachong.getData.get_data as get_data
+json_obj = get_data.DbSelectAllPosition()
+
 
 def info_show(request):
 
-    os.chdir("../../")
+    # os.chdir("../../")
+
     return render(request, "info_show.html", {"all_position": json_obj})
 
 
