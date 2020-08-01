@@ -117,10 +117,12 @@ def main():
         else:
             DbInsertPosition(page, id)
 
-    data = DbSelectAll(name)
-    print(data)
+    # data = DbSelectAll(name)
+    # print(data)
 
     data1 = DbSelectAllPosition()
+    for one in data1:
+        print(one['id'])
     print(data1)
 
 
