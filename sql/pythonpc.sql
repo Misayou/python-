@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50718
 File Encoding         : 65001
 
-Date: 2020-07-31 15:39:48
+Date: 2020-08-01 00:20:25
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -24,7 +24,7 @@ CREATE TABLE `position` (
   `positionName` varchar(255) NOT NULL,
   PRIMARY KEY (`id`,`positionName`),
   UNIQUE KEY `pN` (`positionName`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of position
@@ -37,7 +37,7 @@ DROP TABLE IF EXISTS `positionitem`;
 CREATE TABLE `positionitem` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `positionid` int(11) NOT NULL,
-  `positionItemName` varchar(255) DEFAULT NULL,
+  `positionName` varchar(255) DEFAULT NULL,
   `companySize` varchar(255) DEFAULT NULL,
   `financeStage` varchar(255) DEFAULT NULL,
   `companyLabelList` varchar(255) DEFAULT NULL,
@@ -45,10 +45,17 @@ CREATE TABLE `positionitem` (
   `companyPosition` varchar(255) DEFAULT NULL,
   `salary` varchar(255) DEFAULT NULL,
   `workYear` varchar(255) DEFAULT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  `district` varchar(255) DEFAULT NULL,
+  `education` varchar(255) DEFAULT NULL,
+  `companyFullName` varchar(255) DEFAULT NULL,
+  `jobNature` varchar(255) DEFAULT NULL,
+  `createTime` varchar(255) DEFAULT NULL,
+  `secondType` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `positionid` (`positionid`),
   CONSTRAINT `positionitem_ibfk_1` FOREIGN KEY (`positionid`) REFERENCES `position` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2026 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of positionitem

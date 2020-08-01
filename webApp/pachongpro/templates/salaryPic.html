@@ -7,17 +7,17 @@
 </head>
 <body>
 <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-<div id="main" style="width: 600px; height: 400px;"></div>
+<div id="chart1" style="width: 600px; height: 400px;"></div>
+<div id="chart2" style="width: 600px; height: 400px;"></div>
 
 <script>
     //创建一个图表对象myChart, 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById("main"));
+    var myChart = echarts.init(document.getElementById("chart1"));
     var num = JSON.parse('{{num}}');
-    // var num = [0, 0, 0, 0, 0]
     // 指定图表的配置项和数据
-    var option = {
+    var option1 = {
         title: {
-            text: 'python职位薪资图',
+            text: 'python职位薪资图(依据平均薪资)',
             subtext: '',
             left: 'center'
         },
@@ -28,7 +28,7 @@
         legend: {
             orient: 'vertical',
             left: 'left',
-            data: ['薪资：0～8000', '薪资：8000～9000', '薪资：9000～10000', '薪资：10000～12000', '薪资：> 12000']
+            data: ['薪资：0～8K', '薪资：8K～10K', '薪资：10K～15K', '薪资：15K～20K', '薪资：> 20K']
         },
         series: [
             {
@@ -37,11 +37,11 @@
                 radius: '55%',
                 center: ['50%', '60%'],
                 data: [
-                    {value: num[0], name: '薪资：0～8000'},
-                    {value: num[1], name: '薪资：8000～9000'},
-                    {value: num[2], name: '薪资：9000～10000'},
-                    {value: num[3], name: '薪资：10000～12000'},
-                    {value: num[4], name: '薪资：> 12000'},
+                    {value: num[0], name: '薪资：0～8K'},
+                    {value: num[1], name: '薪资：8K～10K'},
+                    {value: num[2], name: '薪资：10K～15K'},
+                    {value: num[3], name: '薪资：15K～20K'},
+                    {value: num[4], name: '薪资：> 20K'},
                 ],
                 emphasis: {
                     itemStyle: {
@@ -54,7 +54,38 @@
         ]
     };
     // 使用刚指定的配置项和数据显示图表。
-    myChart.setOption(option);
+    myChart.setOption(option1);
+
+    //创建一个图表对象myChart, 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById("chart2"));
+    var cityList = JSON.stringify("{{cityList|safe}}");
+    var cityNum = JSON.parse('{{cityNum|safe}}');
+    var city1 = cityList.replace(/\'/g, '')
+    var city2 = city1.replace('[','')
+    var city3 = city2.replace(']', '')
+    var city4 = city3.replace(/\"/g,"")
+    var city = city4.split(',')
+    // 指定图表的配置项和数据
+    var option2 = {
+        title: {
+            text: '岗位数目地区分配图'
+        },
+        tooltip: {},
+        legend: {
+            data: ['岗位数目']
+        },
+        xAxis: {
+            data: city
+        },
+        yAxis: {},
+        series: [{
+            name: '岗位数目',
+            type: 'bar',
+            data: cityNum
+        }]
+    };
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option2);
 </script>
 </body>
 </html>
