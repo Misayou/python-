@@ -40,3 +40,20 @@ def salaryPic(request):
     # sortSalaryDic = sortSalary(salaryDicTemp)
     return render(request, "salaryPic.html", {'num': salaryDic["num"], "cityList": cityList, "cityNum": cityNum})
 
+
+def echarts1(request):
+    from .xp_modules import getPositionSalaryDic, sortSalary, areaPosition
+    salary = getPositionSalaryDic()
+    salaryDic = salary[0]
+    return render(request, "echarts1.html", {'num': salaryDic["num"]})
+
+def echarts2(request):
+    from .xp_modules import getPositionSalaryDic, sortSalary, areaPosition
+    salary = getPositionSalaryDic()
+    positionSalaryDic = salary[1]
+    city = areaPosition(positionSalaryDic)
+    cityList = city[0]
+    cityNum = city[1]
+    return render(request, "echarts2.html", {"cityList": cityList, "cityNum": cityNum})
+
+

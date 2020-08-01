@@ -47,7 +47,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 ROOT_URLCONF = 'pachongpro.urls'
@@ -56,6 +56,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        # 'DIRS': [os.path.join(BASE_DIR, 'X-admin')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -71,7 +72,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'pachongpro.wsgi.application'
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "jingtai"),)
-
+# STATICFILES_DIRS = (os.path.join(BASE_DIR, "X-admin"),)
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
