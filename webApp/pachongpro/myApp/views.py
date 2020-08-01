@@ -34,7 +34,7 @@ def salaryPic(request):
     return render(request, "salaryPic.html", {'num': salaryDic["num"]})
 
 def member1(request):
-    return render(request, "member-list.html")
+    return render(request, "member-list.html", {"all_position": json_obj})
 
 def member2(request):
     return render(request, "member-list1.html")
