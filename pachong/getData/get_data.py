@@ -117,11 +117,13 @@ def main():
         else:
             DbInsertPosition(page, id)
 
+    # 获取与name有关的职业
     data = DbSelectAll(name)
     for one in data:
         print(one['positionName'])
     print(data)
 
+    # 获取所有职业
     data1 = DbSelectAllPosition()
     for one in data1:
         print(one['id'])
