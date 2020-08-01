@@ -57,9 +57,6 @@
                             <table class="layui-table layui-form">
                                 <thead>
                                   <tr>
-<!--                                    <th>-->
-<!--                                      <input type="checkbox" lay-filter="checkall" name="" lay-skin="primary">-->
-<!--                                    </th>-->
                                     <th>公司名称</th>
                                     <th>公司规模</th>
                                     <th>公司地区</th>
@@ -79,22 +76,18 @@
                                 <tbody>
                                 {% for one in all_position %}
                                   <tr>
-<!--                                    <td>-->
-<!--                                      <input type="checkbox" name="id" value="1"   lay-skin="primary"> -->
-<!--                                    </td>-->
-                                    <td>{{one.companyShortName}}</td>
-                                    <td>{{one.companySize}}</td>
-                                    <td>{{one.city}}:{{one.district}}</td>
 
+                                    <td>{{one.companyFullName}}</td>
+                                    <td>{{ one.companySize}}</td>
+                                    <td>{{one.city}}:{{one.district}}</td>
                                     <td>{{one.positionName}}</td>
                                     <td>{{one.firstType}}</td>
                                     <td>{{one.secondType}}</td>
-
                                     <td>{{one.jobNature}}</td>
                                     <td>{{one.education}}</td>
                                     <td>{{one.workYear}}</td>
                                     <td>{{one.salary}}</td>
-                                    <td>{{one.lastLogin}}</td>
+                                    <td>{{one.createTime}}</td>
                                     <td>
                                       <a onclick="member_stop(this,'10001')" href="javascript:;"  title="启用">
                                         <i class="layui-icon">&#xe601;</i>
@@ -149,6 +142,41 @@
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="firstname"
                                placeholder="公司名称">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lastname" class="col-sm-2 control-label">职位名称</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="secondname"
+                               placeholder="职位名称">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lastname" class="col-sm-2 control-label">职位名称</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="thirdname"
+                               placeholder="职位名称">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lastname" class="col-sm-2 control-label">职位名称</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="lastname"
+                               placeholder="职位名称">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lastname" class="col-sm-2 control-label">职位名称</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="lastname"
+                               placeholder="职位名称">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lastname" class="col-sm-2 control-label">职位名称</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="lastname"
+                               placeholder="职位名称">
                     </div>
                 </div>
                 <div class="form-group">
