@@ -72,19 +72,37 @@ def DbInsertPosition(json, id):
             fuli += i + " "
         companyPosition = str(one['city']+one['district'])
         psid = None
-        positionitem1 = positionitem.Positionitem(psid, id, one['positionName'], one['companySize'], one['financeStage'], fuli, one['firstType'], companyPosition, one['salary'], one['workYear'])
+        positionitem1 = positionitem.Positionitem(psid, id, one['positionName'], one['companySize'], one['financeStage'], fuli, one['firstType'], companyPosition, one['salary'], one['workYear'], one['city'], one['district'], one['education'], one['companyFullName'], one['jobNature'], one['createTime'], one['secondType'])
         positionItemDBcon.insert(positionitem1)
 
 # 通过positionitem表中的positionid获取到该职业的所有相关职位
 # 返回结果类似于这样[<DBclass.positionitem.Positionitem object at 0x000001CA5E608C08>, <DBclass.positionitem.Positionitem object at 0x000001CA5E6178C8>,里面全是对象
-def DbSelectAll(id):
+def DbSelectAll(name):
+    id = selectId(name)
+    print(type(positionItemDBcon.select(id)))
+    data = positionItemDBcon.select(id)
+
+    # 使用方法
+    # for one in data:
+    #     print(one.positionName)
     return positionItemDBcon.select(id)
+
+# 获取positionitem表中所有的职位信息  ,返回数据为对象数组
+def DbSelectAllPosition():
+    data =  positionItemDBcon.selectAllPosition()
+    print(type(positionItemDBcon.selectAllPosition()))
+
+    # 使用方法
+    # for one in data:
+    #     print(one.id)
+    return positionItemDBcon.selectAllPosition()
 
 def main():
     url = 'https://www.lagou.com/jobs/positionAjax.json?needAddtionalResult=false'
-    name = '软件工程师'
+    name = 'c工程师'
     # 第一次爬取，获取到第一页
     firstpage = get_json(url, 1, name)
+
 
     # 读取第一页中的信息，读出总共有多少个职位，并返回页数
     totalcount = firstpage['content']['positionResult']['totalCount']
@@ -98,13 +116,15 @@ def main():
             break
         else:
             DbInsertPosition(page, id)
-    id1 = selectId(name)
 
-    data = DbSelectAll(id1)
-    for one in data:
-        print(one)
+    # data = DbSelectAll(name)
+    # print(data)
+
+    data1 = DbSelectAllPosition()
+    for one in data1:
+        print(one['id'])
+    print(data1)
 
 
 if __name__ == '__main__':
     main()
-

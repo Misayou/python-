@@ -60,69 +60,69 @@
     </style>
 </head>
 <body>
-    <div class="top_button">
-        <!-- 按钮触发模态框 -->
-        <button class="btn btn-primary btn-sm"   data-toggle="modal" data-target="#myModal">
-            添加
-        </button>
-        <button class="btn btn-primary btn-sm"   data-toggle="modal" data-target="#myModal">
-            删除
-        </button>
-        <button class="btn btn-primary btn-sm"   data-toggle="modal" data-target="#myModal">
-            查找
-        </button>
-        <button class="btn btn-primary btn-sm"   data-toggle="modal" data-target="#myModal">
-            修改
-        </button>
-    </div>
-    <table class="table" style="width: 80%;margin-left: 10%"
-           id="table_page"
-            data-pagination="true"
-           data-side-pagination="client"
-            data-page-size="5">
-        <caption style="text-align: center">岗位信息一览表</caption>
-        <thread>
-            <tr>
+<!--    <div class="top_button">-->
+<!--        &lt;!&ndash; 按钮触发模态框 &ndash;&gt;-->
+<!--        <button class="btn btn-primary btn-sm"   data-toggle="modal" data-target="#myModal">-->
+<!--            添加-->
+<!--        </button>-->
+<!--        <button class="btn btn-primary btn-sm"   data-toggle="modal" data-target="#myModal">-->
+<!--            删除-->
+<!--        </button>-->
+<!--        <button class="btn btn-primary btn-sm"   data-toggle="modal" data-target="#myModal">-->
+<!--            查找-->
+<!--        </button>-->
+<!--        <button class="btn btn-primary btn-sm"   data-toggle="modal" data-target="#myModal">-->
+<!--            修改-->
+<!--        </button>-->
+<!--    </div>-->
+<!--    <table class="table" style="width: 80%;margin-left: 10%"-->
+<!--           id="table_page"-->
+<!--            data-pagination="true"-->
+<!--           data-side-pagination="client"-->
+<!--            data-page-size="5">-->
+<!--        <caption style="text-align: center">岗位信息一览表</caption>-->
+<!--        <thread>-->
+<!--            <tr>-->
 
-                <th>公司名称</th>
-                <th>公司规模</th>
-                <th>公司地区</th>
+<!--                <th>公司名称</th>-->
+<!--                <th>公司规模</th>-->
+<!--                <th>公司地区</th>-->
 
-                <th>职位名称</th>
-                <th>职位方向</th>
-                <th>具体定位</th>
+<!--                <th>职位名称</th>-->
+<!--                <th>职位方向</th>-->
+<!--                <th>具体定位</th>-->
 
-                <th>工作类别</th>
-                <th>学历要求</th>
-                <th>工作经验</th>
-                <th>薪酬范围</th>
-                <th>发布时间</th>
-                <th>操作</th>
-            </tr>
-        </thread>
-        <tbody>
-        {% for one in all_position %}
-        <tr>
-            <td>{{one.companyShortName}}</td>
-            <td>{{one.companySize}}</td>
-            <td>{{one.city}}:{{one.district}}</td>
+<!--                <th>工作类别</th>-->
+<!--                <th>学历要求</th>-->
+<!--                <th>工作经验</th>-->
+<!--                <th>薪酬范围</th>-->
+<!--                <th>发布时间</th>-->
+<!--                <th>操作</th>-->
+<!--            </tr>-->
+<!--        </thread>-->
+<!--        <tbody>-->
+<!--        {% for one in all_position %}-->
+<!--        <tr>-->
+<!--            <td>{{one.companyShortName}}</td>-->
+<!--            <td>{{one.companySize}}</td>-->
+<!--            <td>{{one.city}}:{{one.district}}</td>-->
 
-            <td>{{one.positionName}}</td>
-            <td>{{one.firstType}}</td>
-            <td>{{one.secondType}}</td>
+<!--            <td>{{one.positionName}}</td>-->
+<!--            <td>{{one.firstType}}</td>-->
+<!--            <td>{{one.secondType}}</td>-->
 
-            <td>{{one.jobNature}}</td>
-            <td>{{one.education}}</td>
-            <td>{{one.workYear}}</td>
-            <td>{{one.salary}}</td>
-            <td>{{one.lastLogin}}</td>
-            <td><a href="delete">删除|</a><a href="update">修改</a></td>
-        </tr>
-        {% endfor%}
-        </tbody>
-    </table>
+<!--            <td>{{one.jobNature}}</td>-->
+<!--            <td>{{one.education}}</td>-->
+<!--            <td>{{one.workYear}}</td>-->
+<!--            <td>{{one.salary}}</td>-->
+<!--            <td>{{one.lastLogin}}</td>-->
+<!--            <td><a href="delete">删除|</a><a href="update">修改</a></td>-->
+<!--        </tr>-->
+<!--        {% endfor%}-->
+<!--        </tbody>-->
+<!--    </table>-->
 
-<!-- 模态框（Modal） -->
+<!-- 模态框（Modal）-->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
